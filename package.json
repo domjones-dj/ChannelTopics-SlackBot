@@ -1,0 +1,20 @@
+{
+  "name": "channel-topics-bot",
+  "version": "1.0.0",
+  "description": "A slack bot to allow users to subscribe to certain topics in a channel and be notified",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node .",
+    "dev": "nodemon app.js"
+  },
+  "author": "Dominic Jones",
+  "license": "ISC",
+  "dependencies": {
+    "@slack/bolt": "^3.13.1"
+  },
+  "devDependencies": {
+    "dotenv": "^16.0.3",
+    "nodemon": "^2.0.22"
+  }
+}
