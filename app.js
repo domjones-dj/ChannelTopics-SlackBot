@@ -25,7 +25,7 @@ app.command("/add-topic", async ({ command, ack, say }) => {
     const topicName = command.text;
     const newTopic = {
       channel: command.channel_name,
-      topic: [topicName]
+      topics: [topicName]
     };
 
     fs.readFile("subscriptions.json", function (err, data) {
@@ -59,6 +59,7 @@ app.command("/list-topics", async ({ command, ack, say }) => {
     fs.readFile("subscriptions.json", function (err, data) {
       let subscriptions = JSON.parse(data);
       let subscription =  subscriptions.find(it => it.channel === command.channel_name);
+      console.log(subscription)
       let message = "Topics available for subscription:";
       subscription.topics.forEach(topic => {
         message += "\n"
