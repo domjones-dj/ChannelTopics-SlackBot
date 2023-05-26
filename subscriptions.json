@@ -1,10 +1,1 @@
-[{
-    "channel": "general",
-    "topics": [
-        "golf",
-        "skiing",
-        "news",
-        "breaking",
-        "sports"
-    ]
-}]
+[{"channel":"general","topics":"golf,skiing,news,breaking,sports,basketball"},{"channel":"random","topic":["test"]}]

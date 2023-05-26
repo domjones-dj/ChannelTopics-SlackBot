@@ -19,6 +19,39 @@ app.message(/hey/, async ({ command, say }) => {
   }
 });
 
+app.command("/add-topic", async ({ command, ack, say }) => {
+  try {
+    await ack();
+    const topicName = command.text;
+    const newTopic = {
+      channel: command.channel_name,
+      topic: [topicName]
+    };
+
+    fs.readFile("subscriptions.json", function (err, data) {
+      const subscriptions = JSON.parse(data);
+      let subscription = subscriptions.find(it => it.channel === command.channel_name)
+      if(subscription)
+      {
+        subscription.topics += "," + newTopic.topic
+      }
+      else
+      {
+        subscriptions.push(newTopic)
+      }
+
+      fs.writeFile("subscriptions.json", JSON.stringify(subscriptions), function (err) {
+        if (err) throw err;
+        console.log("Successfully saved to subscriptions.json!");
+      });
+    });
+    say(`You've added the following topic to the channel: ${topicName}!`);
+  } catch (error) {
+    console.log("err");
+    console.error(error);
+  }
+});
+
 app.command("/list-topics", async ({ command, ack, say }) => {
   try {
     await ack();
